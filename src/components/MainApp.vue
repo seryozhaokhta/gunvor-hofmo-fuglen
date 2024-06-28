@@ -4,7 +4,7 @@
     <div class="main-app">
         <BackgroundApp />
         <div class="content">
-            <h1>Main App</h1>
+            <h1></h1>
         </div>
     </div>
 </template>

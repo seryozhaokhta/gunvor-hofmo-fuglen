@@ -17,6 +17,12 @@
         <!-- Применяем маску к размытому светящемуся кругу -->
         <div class="blurred-circle" style="mask: url(#svgmask4);"></div>
     </div>
+    <div class="text-content">
+        <h1 class="title">{{ $t('title') }}</h1>
+        <h2 class="collection-title">{{ $t('collectionTitle') }}</h2>
+        <p class="author">{{ $t('author') }}</p>
+        <p class="publication-date">{{ $t('publicationDate') }}</p>
+    </div>
 </template>
 
 <script>
@@ -45,5 +51,47 @@ export default {
     background-color: white;
     filter: blur(15px);
     box-shadow: 0 0 50px rgba(255, 255, 255, 0.7);
+}
+
+.text-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    /* Цвет текста */
+}
+
+.title {
+    font-size: 2rem;
+    margin: 0.5rem 0;
+    font-weight: bold;
+}
+
+.collection-title {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.author,
+.publication-date {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .collection-title {
+        font-size: 1.25rem;
+    }
+
+    .author,
+    .publication-date {
+        font-size: 0.875rem;
+    }
 }
 </style>

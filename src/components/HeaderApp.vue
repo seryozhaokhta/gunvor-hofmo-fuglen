@@ -140,7 +140,7 @@ export default {
     color: black;
     border: none;
     border-radius: 4px;
-    padding: 10px 15px;
+    padding: 5px 10px;
     cursor: pointer;
     transition: background 0.3s ease;
 }
