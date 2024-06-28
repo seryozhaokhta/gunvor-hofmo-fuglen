@@ -3,15 +3,15 @@
 <template>
     <header class="header">
         <router-link to="/" class="home-link">Home</router-link>
-        <button class="burger-menu" @click="burgerMenu = !burgerMenu">
+        <button class="burger-menu" @click="toggleBurgerMenu">
             <span :class="{ 'active': burgerMenu }"></span>
             <span :class="{ 'active': burgerMenu }"></span>
             <span :class="{ 'active': burgerMenu }"></span>
         </button>
         <nav class="nav" :class="{ active: burgerMenu || largeScreen }">
-            <router-link to="/gallery">Gallery</router-link>
-            <router-link to="/poems">Poems</router-link>
-            <router-link to="/history">History</router-link>
+            <router-link to="/gallery" @click="closeBurgerMenu">Gallery</router-link>
+            <router-link to="/poems" @click="closeBurgerMenu">Poems</router-link>
+            <router-link to="/history" @click="closeBurgerMenu">History</router-link>
             <div class="language-switcher-mobile" v-if="!largeScreen">
                 <button @click="setLocale('en')" :class="{ 'active': currentLanguage === 'en' }">EN</button>
                 <button @click="setLocale('no')" :class="{ 'active': currentLanguage === 'no' }">NO</button>
@@ -52,6 +52,14 @@ export default {
             window.removeEventListener("resize", resizeListener);
         });
 
+        const toggleBurgerMenu = () => {
+            burgerMenu.value = !burgerMenu.value;
+        };
+
+        const closeBurgerMenu = () => {
+            burgerMenu.value = false;
+        };
+
         const setLocale = (lang) => {
             locale.value = lang;
             currentLanguage.value = lang;
@@ -59,6 +67,8 @@ export default {
 
         return {
             setLocale,
+            toggleBurgerMenu,
+            closeBurgerMenu,
             burgerMenu,
             largeScreen,
             currentLanguage
@@ -161,14 +171,20 @@ export default {
         top: -100%;
         right: 0;
         width: 100%;
-        height: auto;
+        height: 100%;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         background-color: #f8f9fa;
+        transition: top 0.3s ease-in-out;
     }
 
     .nav.active {
         top: 0;
+    }
+
+    .nav a {
+        margin: 1rem 0;
     }
 
     .language-switcher {

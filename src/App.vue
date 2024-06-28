@@ -24,7 +24,7 @@ export default {
 <style>
 body,
 html {
-  background-color: #8d8d8d;
+  background-color: black;
 }
 
 #app {

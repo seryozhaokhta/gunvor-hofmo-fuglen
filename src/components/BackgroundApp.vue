@@ -9,7 +9,7 @@
                 а затем черный круг размером с вырезаемую часть -->
                 <mask id="svgmask4">
                     <!-- <rect width="100%" height="100%" fill="black" /> -->
-                    <circle cx="150" cy="150" r="650" fill="white"></circle>
+                    <circle cx="150" cy="150" r="600" fill="white"></circle>
                     <circle cx="300" cy="300" r="240" fill="black"></circle>
                 </mask>
             </defs>
@@ -43,7 +43,7 @@ export default {
     height: 600px;
     border-radius: 50%;
     background-color: white;
-    filter: blur(30px);
+    filter: blur(15px);
     box-shadow: 0 0 50px rgba(255, 255, 255, 0.7);
 }
 </style>
