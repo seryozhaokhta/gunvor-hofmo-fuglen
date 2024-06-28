@@ -1,4 +1,26 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+// src/main.js
 
-createApp(App).mount('#app')
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
+import { createI18n } from "vue-i18n";
+import poemsEn from "./i18n/poems_en.json";
+import poemsNo from "./i18n/poems_no.json";
+import poemsRu from "./i18n/poems_ru.json";
+
+const messages = {
+  en: poemsEn,
+  no: poemsNo,
+  ru: poemsRu,
+};
+
+const i18n = createI18n({
+  legacy: false, // Используем современный режим
+  locale: "en", // Установи язык по умолчанию
+  messages,
+});
+
+const app = createApp(App);
+app.use(router);
+app.use(i18n);
+app.mount("#app");
