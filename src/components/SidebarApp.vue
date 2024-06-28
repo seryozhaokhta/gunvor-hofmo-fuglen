@@ -1,10 +1,9 @@
 <!-- src/components/Sidebar.vue -->
- 
+
 <template>
     <div class="sidebar" :class="{ open: isOpen }">
-        <button @click="closeSidebar">Close</button>
         <ul>
-            <li v-for="poem in poems" :key="poem.id" @click="scrollToPoem(poem.id)">
+            <li v-for="poem in poems" :key="poem.id" @click="selectPoem(poem.id)">
                 {{ poem.title }}
             </li>
         </ul>
@@ -25,17 +24,11 @@ export default {
         }
     },
     methods: {
-        closeSidebar() {
-            this.$emit('close');
-        },
-        scrollToPoem(poemId) {
-            const element = document.getElementById(poemId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
+        selectPoem(poemId) {
+            this.$emit('select', poemId);
         }
     }
-}
+};
 </script>
 
 <style scoped>
@@ -62,4 +55,3 @@ button {
     margin-bottom: 1rem;
 }
 </style>
-

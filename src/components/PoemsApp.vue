@@ -2,8 +2,8 @@
 
 <template>
     <div>
-        <button @click="openSidebar">Open Sidebar</button>
-        <SidebarApp :isOpen="isSidebarOpen" :poems="poems" @close="closeSidebar" />
+        <button class="sidebar-toggle" @click="toggleSidebar">{{ sidebarButtonText }}</button>
+        <SidebarApp :isOpen="isSidebarOpen" :poems="poems" @select="handlePoemSelect" />
         <h1>{{ $t('collectionTitle') }}</h1>
         <div v-for="poem in poems" :key="poem.id" :id="poem.id" class="poem">
             <h2>{{ poem.title }}</h2>
@@ -40,20 +40,34 @@ export default {
             }
         });
 
-        function openSidebar() {
-            isSidebarOpen.value = true;
+        function toggleSidebar() {
+            isSidebarOpen.value = !isSidebarOpen.value;
         }
 
         function closeSidebar() {
             isSidebarOpen.value = false;
         }
 
+        function handlePoemSelect(poemId) {
+            const element = document.getElementById(poemId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    closeSidebar();
+                }, 300);
+            }
+        }
+
+        const sidebarButtonText = computed(() => (isSidebarOpen.value ? 'Close Sidebar' : 'Open Sidebar'));
+
         return {
             t,
             poems,
             isSidebarOpen,
-            openSidebar,
-            closeSidebar
+            toggleSidebar,
+            closeSidebar,
+            handlePoemSelect,
+            sidebarButtonText
         };
     }
 };
@@ -65,7 +79,11 @@ export default {
     padding: 10px 0;
 }
 
-button {
+.sidebar-toggle {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
     margin-bottom: 1rem;
 }
 </style>
