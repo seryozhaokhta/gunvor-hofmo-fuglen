@@ -9,9 +9,9 @@
             <span :class="{ 'active': burgerMenu }"></span>
         </button>
         <nav class="nav" :class="{ active: burgerMenu || largeScreen }">
-            <router-link to="/gallery" @click="closeBurgerMenu">Gallery</router-link>
-            <router-link to="/poems" @click="closeBurgerMenu">Poems</router-link>
-            <router-link to="/history" @click="closeBurgerMenu">History</router-link>
+            <router-link to="/gallery" @click="closeBurgerMenu" class="nav-link">Gallery</router-link>
+            <router-link to="/poems" @click="closeBurgerMenu" class="nav-link">Poems</router-link>
+            <router-link to="/history" @click="closeBurgerMenu" class="nav-link">History</router-link>
             <div class="language-switcher-mobile" v-if="!largeScreen">
                 <button @click="setLocale('en')" :class="{ 'active': currentLanguage === 'en' }">EN</button>
                 <button @click="setLocale('no')" :class="{ 'active': currentLanguage === 'no' }">NO</button>
@@ -93,6 +93,20 @@ export default {
 
 .home-link {
     margin-right: auto;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #555;
+    text-decoration: underline;
 }
 
 .nav {

@@ -22,6 +22,7 @@
         <h2 class="collection-title">{{ $t('collectionTitle') }}</h2>
         <p class="author">{{ $t('author') }}</p>
         <p class="publication-date">{{ $t('publicationDate') }}</p>
+        <p class="synopsis">{{ $t('synopsis') }}</p>
     </div>
 </template>
 
@@ -64,7 +65,7 @@ export default {
 }
 
 .title {
-    font-size: 2rem;
+    font-size: 3rem;
     margin: 0.5rem 0;
     font-weight: bold;
 }
@@ -78,6 +79,11 @@ export default {
 .publication-date {
     font-size: 1rem;
     margin: 0.5rem 0;
+}
+
+.synopsis {
+    font-size: 0.8rem;
+    text-align: left;
 }
 
 @media (max-width: 768px) {
