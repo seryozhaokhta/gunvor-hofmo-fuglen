@@ -1,4 +1,4 @@
-<!-- src/components/Sidebar.vue -->
+<!-- src/components/SidebarApp.vue -->
 
 <template>
     <div class="sidebar" :class="{ open: isOpen }">
@@ -48,6 +48,21 @@ export default {
 
 .sidebar.open {
     transform: translateX(0);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    cursor: pointer;
+    padding: 0.5rem 0;
+    text-align: left;
+}
+
+li:hover {
+    background-color: #f0f0f0;
 }
 
 button {
