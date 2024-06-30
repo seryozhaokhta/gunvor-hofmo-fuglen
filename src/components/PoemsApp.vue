@@ -7,7 +7,7 @@
             <span class="sidebar-tooltip">{{ sidebarButtonText }}</span>
         </button>
         <SidebarApp :isOpen="isSidebarOpen" :poems="poems" @select="handlePoemSelect" />
-        <h2>{{ $t('collectionTitle') }}</h2>
+        <h1>{{ $t('collectionTitle') }}</h1>
         <div v-for="poem in poems" :key="poem.id" :id="poem.id" class="poem">
             <h2>{{ poem.title }}</h2>
             <div v-for="line in poem.text" :key="line">{{ line }}</div>
@@ -77,6 +77,12 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+    text-align: left;
+    margin-top: 100px;
+    margin-left: calc(100% * 3 / 13 - 5px);
+}
+
 .poem {
     text-align: left;
     border-bottom: 1px solid #ccc;
