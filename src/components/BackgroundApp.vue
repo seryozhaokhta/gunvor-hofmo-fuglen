@@ -50,8 +50,13 @@ export default {
     height: 600px;
     border-radius: 50%;
     background-color: white;
+    -webkit-filter: blur(15px);
+    /* Добавили префикс -webkit- */
     filter: blur(15px);
     box-shadow: 0 0 50px rgba(255, 255, 255, 0.7);
+    -webkit-mask: url(#svgmask4);
+    /* Добавили префикс -webkit- */
+    mask: url(#svgmask4);
 }
 
 .text-content {
